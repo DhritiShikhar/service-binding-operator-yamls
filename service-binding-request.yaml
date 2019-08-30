@@ -1,0 +1,20 @@
+apiVersion: apps.openshift.io/v1alpha1
+kind: ServiceBindingRequest
+metadata:
+  name: binding-request
+  namespace: service-binding-demo
+spec:
+  envVarPrefix: "SERVICE_BINDING_DATABASE"
+  mountPathPrefix: ""
+  applicationSelector:
+    matchLabels:
+      connects-to: postgres
+      environment: demo
+    group: apps.openshift.io
+    version: v1
+    resource: DeploymentConfig
+  backingServiceSelector:
+    resourceRef: db-demo
+    group: postgresql.baiju.dev
+    version: v1alpha1
+    kind: Database
