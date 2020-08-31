@@ -1,0 +1,9 @@
+apiVersion: "etcd.database.coreos.com/v1beta2"
+kind: "EtcdCluster"
+metadata:
+ name: "etcd-cluster-example"
+ # namespace: default
+ namespace: sb-1
+spec:
+ size: 3
+ version: "3.2.13"

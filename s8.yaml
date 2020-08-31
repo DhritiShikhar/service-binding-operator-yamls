@@ -1,0 +1,20 @@
+apiVersion: apps.openshift.io/v1alpha1
+kind: ServiceBindingRequest
+metadata:
+  name: binding-request-etcd
+spec:
+  # applicationSelector:
+  #   group: apps.openshift.io
+  #   version: v1
+  #   resource: deployments
+  #   # resourceRef: nodejs-rest-http-crud-a-d-s
+  #   resourceRef: nodejs-rest-http-crud
+  backingServiceSelector:
+    group: etcd.database.coreos.com
+    version: v1beta2
+    kind: EtcdCluster
+    resourceRef: etcd-cluster-example
+    # group: operators.coreos.com
+    # kind: Etcd
+    # version: v1alpha1
+    # detectBindingResources: true

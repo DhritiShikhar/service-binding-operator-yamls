@@ -1,0 +1,15 @@
+apiVersion: apps.openshift.io/v1alpha1
+kind: ServiceBindingRequest
+metadata:
+        name: sbr-1
+spec:
+        backingServiceSelectors:
+                - group: group1.io
+                  version: v1
+                  kind: CustomService
+                  resourceRef: customservice1
+                - group: group1.io
+                  version: v1
+                  kind: CustomService
+                  resourceRef: customservice2
+                  # envVarPrefix: customservice1prefix2

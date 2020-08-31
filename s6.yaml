@@ -1,0 +1,21 @@
+apiVersion: apps.openshift.io/v1alpha1
+kind: ServiceBindingRequest
+metadata:
+  name: binding-request
+  namespace: sb-1
+spec:
+  applicationSelector:
+    resourceRef: nodejs-rest-http-crud
+    group: apps
+    version: v1
+    resource: deployments
+  backingServiceSelectors:
+        - group: postgresql.baiju.dev
+          version: v1alpha1
+          kind: Database
+          resourceRef: db-demo
+        # - resourceRef: nodejs-rest-http-crud
+        #   group: apps
+        #   version: v1
+        #   kind: deployments
+  detectBindingResources: true

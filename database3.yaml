@@ -1,0 +1,19 @@
+apiVersion: postgresql.baiju.dev/v1alpha1
+kind: Database
+metadata:
+  name: db-demo
+  namespace: sb-1
+spec:
+  image: docker.io/postgres
+  imageName: postgres
+  dbName: db-demo
+  tags:
+          - "centos7-12.3"
+          - 123
+  userLabels:
+          archive: "false"
+          environment: "demo"   
+  secretName:
+          - primarySecretName: "example-primaryuser"
+            secondarySecretName: "example-secondaryuser"
+          - rootSecretName: "example-secretuser"

@@ -1,0 +1,41 @@
+apiVersion: apps.openshift.io/v1alpha1
+kind: ServiceBindingRequest
+metadata:
+  name: sbr-1
+  namespace: sb-1
+spec:
+  applicationSelector:
+    group: apps
+    version: v1
+    resource: deployments
+    # resourceRef: java-rest-http-crud
+    resourceRef: nodejs-rest-http-crud
+  backingServiceSelector:
+    resourceRef: db-demo
+    group: postgresql.baiju.dev
+    version: v1alpha1
+    kind: Database
+    id: postgresDB
+  # customEnvVar:
+    # - name: JDBC_URL
+    #   value: 'jdbc:postgresql://{{ postgresDB.status.dbConnectionIP }}:{{ .postgresDB.status.dbConnectionPort }}/{{ postgresDB.status.dbName }}'
+    # - name: DB_USER
+    #   value: '{{ postgresDB.status.dbConfigMap.username }}'
+    # - name: DB_PASSWORD
+    #   value: '{{ postgresDB.status.dbConfigMap.password }}'
+  customEnvVar:
+      - name: JDBC_URL
+        value: 'jdbc:postgresql://{{ .postgresDB.status.dbConnectionIP }}:{{ .postgresDB.status.dbConnectionPort }}/{{ .postgresDB.status.dbName }}'
+      - name: DB_USER
+        value: '{{ .postgresDB.status.dbCredentials.user }}'
+      - name: DB_PASSWORD
+        value: '{{ .postgresDB.status.dbCredentials.password }}'
+      # - name: SLICE1
+      #   value: '{{ .postgresDB.spec.slice1.value1 }}'
+      # - name: SLICE2
+      #   value: '{{ .postgresDB.spec.slice2 }}'
+      # - name: MAP1
+      #   value: '{{ .postgresDB.spec.map1 }}'
+      # - name: SLICEOFMAP1
+      #   value: '{{ .postgresDB.spec.sliceOfMap1 }}'
+

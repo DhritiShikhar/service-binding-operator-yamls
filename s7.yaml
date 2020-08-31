@@ -1,0 +1,12 @@
+apiVersion: apps.openshift.io/v1alpha1
+kind: ServiceBindingRequest
+metadata:
+  name: sbr-1
+  # namespace: sb-1
+spec:
+  backingServiceSelectors:
+          - group: couchbase.com
+            version: v2
+            kind: CouchbaseCluster
+            resourceRef: cb-example
+  detectBindingResources: true

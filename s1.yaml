@@ -1,0 +1,31 @@
+apiVersion: apps.openshift.io/v1alpha1
+kind: ServiceBindingRequest
+metadata:
+  name: sbr-1
+  namespace: default
+  # namespace: sb-1
+spec:
+  applicationSelector:
+    group: apps
+    version: v1
+    resource: deployments
+    # resourceRef: java-rest-http-crud
+    # resourceRef: nodejs-rest-http-crud
+    resourceRef: node-todo
+  backingServiceSelector:
+    group: etcd.database.coreos.com
+    version: v1beta2
+    kind: EtcdCluster
+    resourceRef: etcd-cluster-example
+    # resourceRef: db-demo
+    # group: postgresql.baiju.dev
+    # version: v1alpha1
+    # kind: Database
+    # id: postgresDB
+  # customEnvVar:
+  #   - name: JDBC_URL
+  #     value: 'jdbc:postgresql://{{ postgresDB.status.dbConnectionIP }}:{{ .postgresDB.status.dbConnectionPort }}/{{ postgresDB.status.dbName }}'
+  #   - name: DB_USER
+  #     value: '{{ postgresDB.status.dbConfigMap.username }}'
+  #   - name: DB_PASSWORD
+  #     value: '{{ postgresDB.status.dbConfigMap.password }}'

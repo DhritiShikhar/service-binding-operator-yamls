@@ -1,0 +1,10 @@
+apiVersion: "group1.io/v1"
+kind: CustomService
+metadata:
+        name: customservice2
+spec:
+        host: customservice2.com
+        port2: 200
+status:
+        condition2: value2
+        # dbConfigMap: cs2configmap

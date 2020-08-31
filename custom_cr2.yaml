@@ -1,0 +1,16 @@
+apiVersion: "group1.io/v1"
+kind: CustomService
+metadata:
+        name: customservice1
+spec:
+        host: customservice1.com
+        port1: 100
+        sequence1:
+                - value1
+                - value2
+        mapping1:
+                key1: estimate1
+                key2: estimate2
+status:
+        condition1: value1
+

@@ -1,0 +1,12 @@
+apiVersion: "v1"
+kind: ConfigMap
+metadata:
+        name: cs2configmap
+        # annotations:
+        #         servicebindingoperator.redhat.io/spec: binding:env:attribute
+data:                                      
+  db.host: 172.30.159.15                 
+  db.name: db-demo
+  db.password: password
+  db.port: "5432"
+  db.username: postgres
